@@ -61,6 +61,41 @@ public class Sources {
 			}
 		});
 	}
+	
+	public static void provision(String dir) throws IOException {
+		System.err.println("provisioning test data: " + dir);
+		final Path source = resources.get(dir);
+		final Path dest = sandbox.get(dir);
+		Files.walkFileTree(source, new FileVisitor<Path>() {
+
+			@Override
+			public FileVisitResult postVisitDirectory(Path path,
+					IOException arg1) throws IOException {
+				return FileVisitResult.CONTINUE;
+			}
+
+			@Override
+			public FileVisitResult preVisitDirectory(Path path,
+					BasicFileAttributes attr) throws IOException {
+				Files.createDirectory(dest.resolve(source.relativize(path)));
+				return FileVisitResult.CONTINUE;
+			}
+
+			@Override
+			public FileVisitResult visitFile(Path path, BasicFileAttributes arg1)
+					throws IOException {
+				Files.copy(path, dest.resolve(source.relativize(path)));
+				return FileVisitResult.CONTINUE;
+			}
+
+			@Override
+			public FileVisitResult visitFileFailed(Path path, IOException arg1)
+					throws IOException {
+				return FileVisitResult.CONTINUE;
+			}
+		});
+		System.err.println("provisioning finished: " + dir);
+	}
 
 	protected static Sources resources;
 	protected static Sources sandbox;
