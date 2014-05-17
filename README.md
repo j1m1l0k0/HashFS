@@ -31,8 +31,8 @@ Creating a new file system is fairly easy:
 
     URI location = URI.create("hash:files//path/to/file/storage");
     
-    FileSystem fs = FileSystems.create(fsLocation);
-    Path root = Paths.get(locationy);
+    FileSystem fs = FileSystems.create(location);
+    Path root = Paths.get(location);
     
 Now let's store some data:
     
