@@ -34,6 +34,7 @@ Creating a new file system is fairly easy:
     
     FileSystem fs = FileSystems.create(location);
     Path root = Paths.get(location);
+    ```
     
 Now let's store some data:
     
@@ -48,6 +49,7 @@ We now have a few hashed data entries in our storage system:
     for(Path hash: fs.getRootDirectories()) {
     	System.out.println(hash);
     }
+    ```
     
 To retrieve a file:
 
@@ -56,6 +58,7 @@ To retrieve a file:
     Path hash = Files.move(file, root);
     System.out.println(hash);
     Files.move(hash, file);
+    ```
     
 You can also share the stored items:
 
@@ -67,18 +70,22 @@ So that others can do:
     
     ```java
     FileSystem remote = FileSystems.getFileSystem("hash://example.com/served/file/system");
+    ```
 
 Or via a third-party protocol:
 
     ```java
     FileSystem remoteHTTP = FileSystems.getFileSystem("hash:http://example.com/served/file/system");
+    ```
     
 But this can be painfully slow ... let's cache it!
 
     ```java
     HashFileSystem cache = HashFileSystem.cache(remote, Paths.get("caches/myhashfs"));
+    ```
     
 If you like you can now proxy the new file system:
     
     ```java
     HashFileSystemServer server = new HashFileSystemServer(cache);
+    ```
