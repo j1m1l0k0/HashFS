@@ -9,7 +9,7 @@ data by requesting the specified unique key/hash.
 
 **An example:**
 
-Sometimes examples . Creating a new file system is fairly easy:
+Sometimes an example is more clear. Creating a new file system is fairly easy:
 
     URI location = URI.create("hash:files//path/to/file/storage");
     
@@ -28,15 +28,15 @@ Check that the new data is added:
     	System.out.println(hash);
     }
     
-To retrieve stored files:
+To retrieve a file:
 
-	Path file = Paths.get("/my/random/file.txt");
+    Path file = Paths.get("/my/random/file.txt");
 	
-	Path hash = Files.move(file, root);
+    Path hash = Files.move(file, root);
 	
     System.out.println(hash);
 	
-    Files.move(hash, hash);
+    Files.move(hash, file);
     
 You can also share them:
 
@@ -61,7 +61,7 @@ If you like you can serve it again as a proxy:
 
 ## Features
 
-HashFS can be used to efficiently store user data, for example as a storage back-end for a websit that stores file uploads. It was originally created as a storage back-end for a lightweigt version control system, so evidently it is a perfect solution for those scenarios.
+HashFS can be used to efficiently store user data, for example it can be used as a storage back-end for user file uploads on a website. It was originally created as a storage back-end for a lightweigt version control system, so it should be fairly easy to roll out your own SCM-program using this library.
 
  - Data consistency checking (duh!)
  - Supports file system proxying with caching
@@ -73,4 +73,6 @@ HashFS can be used to efficiently store user data, for example as a storage back
 This project uses maven. Just checkout the source and add it to your project's dependencies.
 
 ## Contributing
+
+Contributions are always welcome. Please use the issue tracker to request a feature or send me a pull request. I will maintain this project depending how much it is used, so don't be afraid to tell me if you do.
 
