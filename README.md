@@ -1,6 +1,8 @@
 HashFS
 ======
 
+[![Project Status](https://stillmaintained.com/samvv/HashFS.png)](https://stillmaintained.com/samvv/HashFS)
+
 A distributed content-addressable file system library written in Java.
 
 Inspired by the storage engines used by Git and Mercurial, this file system
