@@ -1,13 +1,15 @@
 HashFS
 ======
 
-[![Project Status](https://stillmaintained.com/samvv/HashFS.png)](https://stillmaintained.com/samvv/HashFS)
-
 A distributed content-addressable file system library written in Java.
 
 Inspired by the storage engines used by Git and Mercurial, this file system
 stores blobs of data in a persistent hash table. The application can then retrieve this
 data by requesting the specified unique key/hash.
+
+## Project Superseded
+
+This project will be superseded by [TheOrionGroup/HashDB](https://github.com/OrionGroup/HashDB).
 
 ## Features
 
